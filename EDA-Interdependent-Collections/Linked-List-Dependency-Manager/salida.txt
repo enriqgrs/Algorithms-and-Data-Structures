@@ -1,0 +1,164 @@
+-----LISTADO: 0
+-----
+INTRODUCIDO: [ creacion_cuenta ] --- Creación de una nueva cuenta bancaria --- ( 1 )
+NO INTRODUCIDO: [ creacion_cuenta ] --- Intento duplicado de creación de cuenta con mismo nombre (prueba duplicado) --- ( 1 )
+INTRODUCIDO: [ deposito_efectivo -de-> creacion_cuenta ] --- Ingreso de dinero en cuenta --- ( 2 )
+INTRODUCIDO: [ retiro_efectivo -de-> creacion_cuenta ] --- Retiro de dinero en efectivo --- ( 2 )
+INTRODUCIDO: [ transferencia -de-> creacion_cuenta ] --- Transferencia entre cuentas --- ( 3 )
+INTRODUCIDO: [ consulta_saldo -de-> creacion_cuenta ] --- Consulta del saldo disponible en cuenta --- ( 3 )
+INTRODUCIDO: [ apertura_sucursal ] --- Apertura diaria de la sucursal bancaria --- ( 1 )
+INTRODUCIDO: [ cierre_sucursal ] --- Cierre diario de la sucursal bancaria --- ( 2 )
+INTRODUCIDO: [ reporte_diario -de-> cierre_sucursal ] --- Generación del reporte diario de operaciones --- ( 3 )
+INTRODUCIDO: [ bloqueo_cuenta -de-> creacion_cuenta ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 )
+INTRODUCIDO: [ notificacion_cliente -de-> bloqueo_cuenta ] --- Notificación enviada al cliente --- ( 5 )
+INTRODUCIDO: [ verificacion_identidad -de-> creacion_cuenta ] --- Verificación de identidad del cliente --- ( 2 )
+INTRODUCIDO: [ autenticacion_login ] --- Inicio de sesión en la banca digital --- ( 2 )
+INTRODUCIDO: [ transferencia_online -de-> autenticacion_login ] --- Transferencia realizada por el cliente desde la banca digital --- ( 3 )
+INTRODUCIDO: [ transferencia_interna -de-> transferencia ] --- Transferencia entre cuentas del mismo titular --- ( 2 )
+INTRODUCIDO: [ auditoria_seguridad ] --- Registro de eventos de seguridad --- ( 1 )
+INTRODUCIDO: [ cierre_emergencia ] --- Cierre de emergencia por fallo crítico --- ( 1 )
+INTRODUCIDO: [ restauracion_servicio -de-> cierre_emergencia ] --- Restauración de servicios tras incidencia --- ( 2 )
+INTRODUCIDO: [ notificacion_fraude -de-> verificacion_identidad ] --- Notificación por posible fraude detectado --- ( 4 )
+INTRODUCIDO: [ verificacion_identidad_backup -de-> verificacion_identidad ] --- Proceso alternativo de verificación de identidad --- ( 3 )
+-----LISTADO: 19
+[ apertura_sucursal --- 0 ] --- Apertura diaria de la sucursal bancaria --- ( 1 )
+[ auditoria_seguridad --- 0 ] --- Registro de eventos de seguridad --- ( 1 )
+[ autenticacion_login --- 1 ] --- Inicio de sesión en la banca digital --- ( 2 )
+[ bloqueo_cuenta -de-> creacion_cuenta ;;; 1 ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 )
+[ cierre_emergencia --- 1 ] --- Cierre de emergencia por fallo crítico --- ( 1 )
+[ cierre_sucursal --- 1 ] --- Cierre diario de la sucursal bancaria --- ( 2 )
+[ consulta_saldo -de-> creacion_cuenta ;;; 0 ] --- Consulta del saldo disponible en cuenta --- ( 3 )
+[ creacion_cuenta --- 6 ] --- Creación de una nueva cuenta bancaria --- ( 1 )
+[ deposito_efectivo -de-> creacion_cuenta ;;; 0 ] --- Ingreso de dinero en cuenta --- ( 2 )
+[ notificacion_cliente -de-> bloqueo_cuenta ;;; 0 ] --- Notificación enviada al cliente --- ( 5 )
+[ notificacion_fraude -de-> verificacion_identidad ;;; 0 ] --- Notificación por posible fraude detectado --- ( 4 )
+[ reporte_diario -de-> cierre_sucursal ;;; 0 ] --- Generación del reporte diario de operaciones --- ( 3 )
+[ restauracion_servicio -de-> cierre_emergencia ;;; 0 ] --- Restauración de servicios tras incidencia --- ( 2 )
+[ retiro_efectivo -de-> creacion_cuenta ;;; 0 ] --- Retiro de dinero en efectivo --- ( 2 )
+[ transferencia -de-> creacion_cuenta ;;; 1 ] --- Transferencia entre cuentas --- ( 3 )
+[ transferencia_interna -de-> transferencia ;;; 0 ] --- Transferencia entre cuentas del mismo titular --- ( 2 )
+[ transferencia_online -de-> autenticacion_login ;;; 0 ] --- Transferencia realizada por el cliente desde la banca digital --- ( 3 )
+[ verificacion_identidad -de-> creacion_cuenta ;;; 2 ] --- Verificación de identidad del cliente --- ( 2 )
+[ verificacion_identidad_backup -de-> verificacion_identidad ;;; 0 ] --- Proceso alternativo de verificación de identidad --- ( 3 )
+-----
+****DEPENDIENTES: autenticacion_login
+[ autenticacion_login --- 1 ] --- Inicio de sesión en la banca digital --- ( 2 ) ****
+[1 -> transferencia_online -de-> autenticacion_login ;;; 0 ] --- Transferencia realizada por el cliente desde la banca digital --- ( 3 ) ;;;;
+****FINAL dependientes -de-> autenticacion_login
+****DEPENDIENTES: bloqueo_cuenta
+[ bloqueo_cuenta -de-> creacion_cuenta ;;; 1 ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 ) ****
+[1 -> notificacion_cliente -de-> bloqueo_cuenta ;;; 0 ] --- Notificación enviada al cliente --- ( 5 ) ;;;;
+****FINAL dependientes -de-> bloqueo_cuenta
+****DEPENDIENTES: creacion_cuenta
+[ creacion_cuenta --- 6 ] --- Creación de una nueva cuenta bancaria --- ( 1 ) ****
+[1 -> bloqueo_cuenta -de-> creacion_cuenta ;;; 1 ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 ) ;;;;
+[2 -> consulta_saldo -de-> creacion_cuenta ;;; 0 ] --- Consulta del saldo disponible en cuenta --- ( 3 ) ;;;;
+[3 -> deposito_efectivo -de-> creacion_cuenta ;;; 0 ] --- Ingreso de dinero en cuenta --- ( 2 ) ;;;;
+[4 -> retiro_efectivo -de-> creacion_cuenta ;;; 0 ] --- Retiro de dinero en efectivo --- ( 2 ) ;;;;
+[5 -> transferencia -de-> creacion_cuenta ;;; 1 ] --- Transferencia entre cuentas --- ( 3 ) ;;;;
+[6 -> verificacion_identidad -de-> creacion_cuenta ;;; 2 ] --- Verificación de identidad del cliente --- ( 2 ) ;;;;
+****FINAL dependientes -de-> creacion_cuenta
+CAMBIADO: [ deposito_efectivo -de-> creacion_cuenta ;;; 0 ] --- Depósito de efectivo revisado y validado por el sistema --- ( 2 )
+CAMBIADO: [ transferencia -de-> creacion_cuenta ;;; 1 ] --- Transferencia procesada con éxito --- ( 3 )
+CAMBIADO: [ creacion_cuenta --- 6 ] --- Creación de cuenta actualizada con datos adicionales --- ( 1 )
+INTENTANDO hacer depend.: transferencia_online -de-> verificacion_identidad
+INTENTANDO hacer depend.: reporte_diario -de-> cierre_sucursal
+IMPOSIBLE hacer depend.: no_existente -de-> creacion_cuenta
+LOCALIZADO: [ creacion_cuenta --- 6 ] --- Creación de cuenta actualizada con datos adicionales --- ( 1 )
+LOCALIZADO: [ transferencia_online -de-> verificacion_identidad ;;; 0 ] --- Transferencia realizada por el cliente desde la banca digital --- ( 3 )
+NO LOCALIZADO: no_existente
+DEPendiente: bloqueo_cuenta
+DESCONOCIDO: no_existente
+INDEPENDIZADO: verificacion_identidad
+YA ERA INDepend.: autenticacion_login
+YA ERA INDepend.: creacion_cuenta
+NO BORRADO: transferencia
+NO BORRADO: bloqueo_cuenta
+NO BORRADO: no_existente
+****DEPENDIENTES: transferencia
+[ transferencia -de-> creacion_cuenta ;;; 1 ] --- Transferencia procesada con éxito --- ( 3 ) ****
+[1 -> transferencia_interna -de-> transferencia ;;; 0 ] --- Transferencia entre cuentas del mismo titular --- ( 2 ) ;;;;
+****FINAL dependientes -de-> transferencia
+****DEPENDIENTES: verificacion_identidad
+[ verificacion_identidad --- 3 ] --- Verificación de identidad del cliente --- ( 2 ) ****
+[1 -> notificacion_fraude -de-> verificacion_identidad ;;; 0 ] --- Notificación por posible fraude detectado --- ( 4 ) ;;;;
+[2 -> transferencia_online -de-> verificacion_identidad ;;; 0 ] --- Transferencia realizada por el cliente desde la banca digital --- ( 3 ) ;;;;
+[3 -> verificacion_identidad_backup -de-> verificacion_identidad ;;; 0 ] --- Proceso alternativo de verificación de identidad --- ( 3 ) ;;;;
+****FINAL dependientes -de-> verificacion_identidad
+****DEPENDIENTES: no_existente
+****DESCONOCIDO
+INTRODUCIDO: [ cambio_prioridad_prueba ] --- Evento para probar cambio de prioridad y modificaciones --- ( 5 )
+CAMBIADO: [ cambio_prioridad_prueba --- 0 ] --- Evento modificado: prioridad reducida para pruebas --- ( 1 )
+INTENTANDO hacer depend.: retiro_efectivo -de-> bloqueo_cuenta
+IMPOSIBLE hacer depend.: retiro_efectivo -de-> no_existente_superior
+NO INTRODUCIDO: [ dependiente_sin_padre -de-> no_existente_superior ] --- Evento que intenta depender de un elemento inexistente --- ( 2 )
+INTRODUCIDO: [ dependiente_de_transferencia -de-> transferencia ] --- Evento que depende de transferencia --- ( 2 )
+-----LISTADO: 21
+[ apertura_sucursal --- 0 ] --- Apertura diaria de la sucursal bancaria --- ( 1 )
+[ auditoria_seguridad --- 0 ] --- Registro de eventos de seguridad --- ( 1 )
+[ autenticacion_login --- 0 ] --- Inicio de sesión en la banca digital --- ( 2 )
+[ bloqueo_cuenta -de-> creacion_cuenta ;;; 2 ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 )
+[ cambio_prioridad_prueba --- 0 ] --- Evento modificado: prioridad reducida para pruebas --- ( 1 )
+[ cierre_emergencia --- 1 ] --- Cierre de emergencia por fallo crítico --- ( 1 )
+[ cierre_sucursal --- 1 ] --- Cierre diario de la sucursal bancaria --- ( 2 )
+[ consulta_saldo -de-> creacion_cuenta ;;; 0 ] --- Consulta del saldo disponible en cuenta --- ( 3 )
+[ creacion_cuenta --- 4 ] --- Creación de cuenta actualizada con datos adicionales --- ( 1 )
+[ dependiente_de_transferencia -de-> transferencia ;;; 0 ] --- Evento que depende de transferencia --- ( 2 )
+[ deposito_efectivo -de-> creacion_cuenta ;;; 0 ] --- Depósito de efectivo revisado y validado por el sistema --- ( 2 )
+[ notificacion_cliente -de-> bloqueo_cuenta ;;; 0 ] --- Notificación enviada al cliente --- ( 5 )
+[ notificacion_fraude -de-> verificacion_identidad ;;; 0 ] --- Notificación por posible fraude detectado --- ( 4 )
+[ reporte_diario -de-> cierre_sucursal ;;; 0 ] --- Generación del reporte diario de operaciones --- ( 3 )
+[ restauracion_servicio -de-> cierre_emergencia ;;; 0 ] --- Restauración de servicios tras incidencia --- ( 2 )
+[ retiro_efectivo -de-> bloqueo_cuenta ;;; 0 ] --- Retiro de dinero en efectivo --- ( 2 )
+[ transferencia -de-> creacion_cuenta ;;; 2 ] --- Transferencia procesada con éxito --- ( 3 )
+[ transferencia_interna -de-> transferencia ;;; 0 ] --- Transferencia entre cuentas del mismo titular --- ( 2 )
+[ transferencia_online -de-> verificacion_identidad ;;; 0 ] --- Transferencia realizada por el cliente desde la banca digital --- ( 3 )
+[ verificacion_identidad --- 3 ] --- Verificación de identidad del cliente --- ( 2 )
+[ verificacion_identidad_backup -de-> verificacion_identidad ;;; 0 ] --- Proceso alternativo de verificación de identidad --- ( 3 )
+-----
+****DEPENDIENTES: transferencia
+[ transferencia -de-> creacion_cuenta ;;; 2 ] --- Transferencia procesada con éxito --- ( 3 ) ****
+[1 -> dependiente_de_transferencia -de-> transferencia ;;; 0 ] --- Evento que depende de transferencia --- ( 2 ) ;;;;
+[2 -> transferencia_interna -de-> transferencia ;;; 0 ] --- Transferencia entre cuentas del mismo titular --- ( 2 ) ;;;;
+****FINAL dependientes -de-> transferencia
+****DEPENDIENTES: creacion_cuenta
+[ creacion_cuenta --- 4 ] --- Creación de cuenta actualizada con datos adicionales --- ( 1 ) ****
+[1 -> bloqueo_cuenta -de-> creacion_cuenta ;;; 2 ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 ) ;;;;
+[2 -> consulta_saldo -de-> creacion_cuenta ;;; 0 ] --- Consulta del saldo disponible en cuenta --- ( 3 ) ;;;;
+[3 -> deposito_efectivo -de-> creacion_cuenta ;;; 0 ] --- Depósito de efectivo revisado y validado por el sistema --- ( 2 ) ;;;;
+[4 -> transferencia -de-> creacion_cuenta ;;; 2 ] --- Transferencia procesada con éxito --- ( 3 ) ;;;;
+****FINAL dependientes -de-> creacion_cuenta
+****DEPENDIENTES: bloqueo_cuenta
+[ bloqueo_cuenta -de-> creacion_cuenta ;;; 2 ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 ) ****
+[1 -> notificacion_cliente -de-> bloqueo_cuenta ;;; 0 ] --- Notificación enviada al cliente --- ( 5 ) ;;;;
+[2 -> retiro_efectivo -de-> bloqueo_cuenta ;;; 0 ] --- Retiro de dinero en efectivo --- ( 2 ) ;;;;
+****FINAL dependientes -de-> bloqueo_cuenta
+NO BORRADO: dependiente_sin_padre
+BORRADO: dependiente_de_transferencia
+DESCONOCIDO: dependiente_sin_padre
+NO INDEPENDIZADO: dependiente_de_transferencia
+IMPOSIBLE hacer depend.: dependiente_de_transferencia -de-> creacion_cuenta
+IMPOSIBLE hacer depend.: dependiente_de_transferencia -de-> no_existente_superior
+NO CAMBIADO: no_existente
+-----LISTADO: 20
+[ apertura_sucursal --- 0 ] --- Apertura diaria de la sucursal bancaria --- ( 1 )
+[ auditoria_seguridad --- 0 ] --- Registro de eventos de seguridad --- ( 1 )
+[ autenticacion_login --- 0 ] --- Inicio de sesión en la banca digital --- ( 2 )
+[ bloqueo_cuenta -de-> creacion_cuenta ;;; 2 ] --- Bloqueo de una cuenta por actividad sospechosa --- ( 4 )
+[ cambio_prioridad_prueba --- 0 ] --- Evento modificado: prioridad reducida para pruebas --- ( 1 )
+[ cierre_emergencia --- 1 ] --- Cierre de emergencia por fallo crítico --- ( 1 )
+[ cierre_sucursal --- 1 ] --- Cierre diario de la sucursal bancaria --- ( 2 )
+[ consulta_saldo -de-> creacion_cuenta ;;; 0 ] --- Consulta del saldo disponible en cuenta --- ( 3 )
+[ creacion_cuenta --- 4 ] --- Creación de cuenta actualizada con datos adicionales --- ( 1 )
+[ deposito_efectivo -de-> creacion_cuenta ;;; 0 ] --- Depósito de efectivo revisado y validado por el sistema --- ( 2 )
+[ notificacion_cliente -de-> bloqueo_cuenta ;;; 0 ] --- Notificación enviada al cliente --- ( 5 )
+[ notificacion_fraude -de-> verificacion_identidad ;;; 0 ] --- Notificación por posible fraude detectado --- ( 4 )
+[ reporte_diario -de-> cierre_sucursal ;;; 0 ] --- Generación del reporte diario de operaciones --- ( 3 )
+[ restauracion_servicio -de-> cierre_emergencia ;;; 0 ] --- Restauración de servicios tras incidencia --- ( 2 )
+[ retiro_efectivo -de-> bloqueo_cuenta ;;; 0 ] --- Retiro de dinero en efectivo --- ( 2 )
+[ transferencia -de-> creacion_cuenta ;;; 1 ] --- Transferencia procesada con éxito --- ( 3 )
+[ transferencia_interna -de-> transferencia ;;; 0 ] --- Transferencia entre cuentas del mismo titular --- ( 2 )
+[ transferencia_online -de-> verificacion_identidad ;;; 0 ] --- Transferencia realizada por el cliente desde la banca digital --- ( 3 )
+[ verificacion_identidad --- 3 ] --- Verificación de identidad del cliente --- ( 2 )
+[ verificacion_identidad_backup -de-> verificacion_identidad ;;; 0 ] --- Proceso alternativo de verificación de identidad --- ( 3 )
+-----

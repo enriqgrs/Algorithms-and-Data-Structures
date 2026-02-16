@@ -1,0 +1,231 @@
+LT
+A
+creacion_cuenta
+Creación de una nueva cuenta bancaria
+1
+INDependiente
+-.-.-.-.-
+A
+creacion_cuenta
+Intento duplicado de creación de cuenta con mismo nombre (prueba duplicado)
+1
+INDependiente
+-.-.-.-.-
+A
+deposito_efectivo
+Ingreso de dinero en cuenta
+2
+DEPendiente
+creacion_cuenta
+A
+retiro_efectivo
+Retiro de dinero en efectivo
+2
+DEPendiente
+creacion_cuenta
+A
+transferencia
+Transferencia entre cuentas
+3
+DEPendiente
+creacion_cuenta
+A
+consulta_saldo
+Consulta del saldo disponible en cuenta
+3
+DEPendiente
+creacion_cuenta
+A
+apertura_sucursal
+Apertura diaria de la sucursal bancaria
+1
+INDependiente
+-.-.-.-.-
+A
+cierre_sucursal
+Cierre diario de la sucursal bancaria
+2
+INDependiente
+-.-.-.-.-
+A
+reporte_diario
+Generación del reporte diario de operaciones
+3
+DEPendiente
+cierre_sucursal
+A
+bloqueo_cuenta
+Bloqueo de una cuenta por actividad sospechosa
+4
+DEPendiente
+creacion_cuenta
+A
+notificacion_cliente
+Notificación enviada al cliente
+5
+DEPendiente
+bloqueo_cuenta
+A
+verificacion_identidad
+Verificación de identidad del cliente
+2
+DEPendiente
+creacion_cuenta
+A
+autenticacion_login
+Inicio de sesión en la banca digital
+2
+INDependiente
+-.-.-.-.-
+A
+transferencia_online
+Transferencia realizada por el cliente desde la banca digital
+3
+DEPendiente
+autenticacion_login
+A
+transferencia_interna
+Transferencia entre cuentas del mismo titular
+2
+DEPendiente
+transferencia
+A
+auditoria_seguridad
+Registro de eventos de seguridad
+1
+INDependiente
+-.-.-.-.-
+A
+cierre_emergencia
+Cierre de emergencia por fallo crítico
+1
+INDependiente
+-.-.-.-.-
+A
+restauracion_servicio
+Restauración de servicios tras incidencia
+2
+DEPendiente
+cierre_emergencia
+A
+notificacion_fraude
+Notificación por posible fraude detectado
+4
+DEPendiente
+verificacion_identidad
+A
+verificacion_identidad_backup
+Proceso alternativo de verificación de identidad
+3
+DEPendiente
+verificacion_identidad
+LT
+LD
+autenticacion_login
+LD
+bloqueo_cuenta
+LD
+creacion_cuenta
+C
+deposito_efectivo
+Depósito de efectivo revisado y validado por el sistema
+2
+C
+transferencia
+Transferencia procesada con éxito
+3
+C
+creacion_cuenta
+Creación de cuenta actualizada con datos adicionales
+1
+D
+transferencia_online
+verificacion_identidad
+D
+reporte_diario
+cierre_sucursal
+D
+no_existente
+creacion_cuenta
+O
+creacion_cuenta
+O
+transferencia_online
+O
+no_existente
+E
+bloqueo_cuenta
+E
+no_existente
+I
+verificacion_identidad
+I
+autenticacion_login
+I
+creacion_cuenta
+B
+transferencia
+B
+bloqueo_cuenta
+B
+no_existente
+LD
+transferencia
+LD
+verificacion_identidad
+LD
+no_existente
+A
+cambio_prioridad_prueba
+Evento para probar cambio de prioridad y modificaciones
+5
+INDependiente
+-.-.-.-.-
+C
+cambio_prioridad_prueba
+Evento modificado: prioridad reducida para pruebas
+1
+D
+retiro_efectivo
+bloqueo_cuenta
+D
+retiro_efectivo
+no_existente_superior
+A
+dependiente_sin_padre
+Evento que intenta depender de un elemento inexistente
+2
+DEPendiente
+no_existente_superior
+A
+dependiente_de_transferencia
+Evento que depende de transferencia
+2
+DEPendiente
+transferencia
+LT
+LD
+transferencia
+LD
+creacion_cuenta
+LD
+bloqueo_cuenta
+B
+dependiente_sin_padre
+B
+dependiente_de_transferencia
+E
+dependiente_sin_padre
+I
+dependiente_de_transferencia
+D
+dependiente_de_transferencia
+creacion_cuenta
+D
+dependiente_de_transferencia
+no_existente_superior
+C
+no_existente
+Intento de cambiar evento inexistente
+1
+LT
